@@ -24,7 +24,7 @@ int main() {
 
 	for (int j = 0; j < 10; j++) {
 		for (int i = 1; i < ROZMIAR - 1; i++) {
-			tab_wynik_tmp[i] = (1 - 2 * ((D*t) / (i*i)))*tab_wynik[i] + (tab_wynik[i - 1] + tab_wynik[i + 1]);
+			tab_wynik_tmp[i] = (1 - 2 * ((D*t) / (i*i)))*tab_wynik[i] + ((D*t) / (i*i))*(tab_wynik[i - 1] + tab_wynik[i + 1]);
 		}
 		t++;
 		for (int i = 1; i < ROZMIAR - 1; i++)
