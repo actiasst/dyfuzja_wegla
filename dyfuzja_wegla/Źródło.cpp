@@ -34,5 +34,6 @@ int main() {
 	for (int i = 1; i < ROZMIAR - 1; i++)
 		cout << i << ": " << tab_wynik_tmp[i] << endl;
 
+
 	system("pause");
 }
