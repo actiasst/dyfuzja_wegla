@@ -22,8 +22,8 @@ int main() {
 	}
 
 	for (int i = 0; i < 6; i++) {
-		tab_wynik[i] = 0.65;
-		tab_wynik_tmp[i] = 0.65;
+		tab_wynik[i] = 0.67;
+		tab_wynik_tmp[i] = 0.67;
 	}
 
 	for (int i = 6; i < ROZMIAR; i++) {
@@ -32,22 +32,29 @@ int main() {
 	}
 
 	int obecna_komorka = 6;
-
-	for (int i = 0; i < 1200; i++) {
+	//for (int i = 0; i < 0; i++) {
+	//	tab_wynik_tmp[0] = (1 - (2 * D * t))*tab_wynik[0] + D * t *(tab_wynik[1] + tab_wynik[1]);
+	//	for (int j = 1; j < ROZMIAR - 1; j++) {
+	//		tab_wynik_tmp[j] = (1 - (2 * D * t))*tab_wynik[j] + D * t *(tab_wynik[j - 1] + tab_wynik[j + 1]);
+	//	}
+	//	tab_wynik_tmp[99] = (1 - (2 * D * t))*tab_wynik[99] + D * t *(tab_wynik[98] + tab_wynik[98]);
+	//	for (int j = 0; j < ROZMIAR; j++)
+	//		tab_wynik[j] = tab_wynik_tmp[j];
+	//}
+	for (int i = 0; i < 44; i++) {
+		tab_wynik_tmp[0] = (1 - (2 * D * t))*tab_wynik[0] + D * t *(tab_wynik[1] + tab_wynik[1]);
 		for (int j = 1; j <= obecna_komorka; j++) {
-			tab_wynik_tmp[j] = (1 - 2 * D * t)*tab_wynik[j] + D * t *(tab_wynik[j - 1] + tab_wynik[j + 1]);
+			tab_wynik_tmp[j] = (1 - (2 * D * t))*tab_wynik[j] + D * t *(tab_wynik[j - 1] + tab_wynik[j + 1]);
 		}
-		for (int j = 1; j <= obecna_komorka; j++)
+		tab_wynik_tmp[obecna_komorka] = (1 - (2 * D * t))*tab_wynik[obecna_komorka] + D * t *(tab_wynik[obecna_komorka-1] + tab_wynik[obecna_komorka-1]);
+		for (int j = 0; j < ROZMIAR; j++)
 			tab_wynik[j] = tab_wynik_tmp[j];
-		tab_wynik[obecna_komorka+1] = tab_wynik[obecna_komorka];
-		//tab_wynik[0] = tab_wynik[1];
-		if (!(0 < (-245.5)*tab_wynik[obecna_komorka] + 912 - temp)) {
-			tab_wynik[obecna_komorka + 1] = 0.02;
+		if (!(0 < (-245.5)*tab_wynik[obecna_komorka] + 912 - temp)) 
 			obecna_komorka++;
-		}
 	}
 
-	for (int i = 0; i < 20; i++) {
+
+	for (int i = 0; i < 10; i++) {
 		cout << i << ": " << tab_wynik[i] << endl;
 	}
 
