@@ -58,5 +58,6 @@ int main() {
 		cout << i << ": " << tab_wynik[i] << endl;
 	}
 
+
 	system("pause");
 }
